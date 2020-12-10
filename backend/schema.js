@@ -2,6 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
  type Contact {
+      _id:ID
       firstName: String,
       lastName: String,
       age:Int,
@@ -9,6 +10,7 @@ const typeDefs = gql`
       email:String,
   }
   input ContactInput {
+      _id:ID,
       firstName: String,
       lastName: String,
       age:Int,
@@ -16,12 +18,13 @@ const typeDefs = gql`
       email:String
   }
   type Query {
-    contacts: [Contact],
+    contacts(firstName:String): [Contact],
     
   }
   type Mutation {
       addContact(Input:ContactInput): Contact
       deleteContact(firstName:String): Contact
+      changeContact(Input:ContactInput): Contact
   }
 `
 
