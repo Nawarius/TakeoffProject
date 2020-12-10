@@ -38,7 +38,7 @@ const resolvers = {
           return await Contact.findById(args.Input._id)
         },
         deleteContact: async function (parent, args) {
-          return await Contact.deleteOne({firstName: args.firstName})
+          return await Contact.findByIdAndDelete(args._id)
         }
         
     }

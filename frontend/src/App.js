@@ -1,11 +1,12 @@
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Bar from './Components/Bar'
 import Main from './Components/MainPresent'
 import Contacts from './Components/ContactsContainer'
-import Login from './Components/LoginPresent'
+import Login from './Components/LoginContainer'
 import {Container, Paper} from '@material-ui/core'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import React, { useState } from 'react';
 
 const client = new ApolloClient({
   uri: 'http://localhost:8000',
@@ -13,21 +14,25 @@ const client = new ApolloClient({
 });
 
 function App() {
-  
+  const [isLogged,setLogin] = useState(false)
+
   return <>
     <Switch>
       <ApolloProvider client = {client}>
         <Container style = {{height:'100%'}}>
-          <Paper elevation = {10} >
+          <Paper elevation = {10} style = {{minHeight:'100%'}} >
           <Bar />
             <Route path="/" exact>
               <Main />
             </Route>
             <Route path="/contacts">
-              <Contacts />
+              {isLogged && <Contacts />}
+              {!isLogged && <Redirect to = '/login' />}
             </Route>
             <Route path="/login">
-              <Login />
+              {isLogged && <Redirect to = '/contacts' />}
+              {!isLogged && <Login setLogin = {setLogin}/>}
+              
             </Route>
             
             </Paper>

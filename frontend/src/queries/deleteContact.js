@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client'
 
 const DELETE_CONTACT = gql`
-    mutation($firstName:String){
-        deleteContact(firstName:$firstName){
+    mutation($_id:ID){
+        deleteContact(_id:$_id){
             firstName
             lastName
         }

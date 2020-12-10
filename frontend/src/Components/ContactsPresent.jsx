@@ -8,10 +8,16 @@ import {ChangeContext} from './ContactsContainer'
 
 const useStyles = makeStyles((theme) => ({
     name: {
-        margin: theme.spacing(4.5)
+        margin: theme.spacing(4.5),
+        width:'5%'
+    },
+    email:{
+        margin: theme.spacing(4.5),
+        width:'20%'
     },
     button:{
-        margin:theme.spacing(4.5)
+        margin:theme.spacing(4.5),
+        height:"100%"
     },
     large: {
       width: theme.spacing(10),
@@ -36,7 +42,7 @@ const ContactsPresent = ({data, submitHandler, changeHandle, open, setOpen, dele
                 <Typography variant = 'h6' className = {classes.name} > {item.firstName} </Typography>
                 <Typography variant = 'h6' className = {classes.name} >{item.lastName}</Typography> 
                 <Typography variant = 'h6' className = {classes.name} >{item.age}</Typography>
-                <Typography variant = 'h6' className = {classes.name} >{item.email}</Typography>
+                <Typography variant = 'h6' className = {classes.email} >{item.email}</Typography>
                 <Button color = 'primary' variant = 'contained'  className={classes.button} onClick = {()=>{
                     setFirstName(item.firstName)
                     setLastName(item.lastName)
@@ -46,7 +52,7 @@ const ContactsPresent = ({data, submitHandler, changeHandle, open, setOpen, dele
                     setId(item._id)
                     setChangeOpenModal(true)}}
                 >Изменить</Button>
-                <Button variant="contained" color="secondary" className={classes.button} onClick = {()=>{deleteHandle(item.firstName)}} startIcon={<DeleteIcon />}>Удалить</Button>
+                <Button variant="contained" color="secondary" className={classes.button} onClick = {()=>{deleteHandle(item._id)}} startIcon={<DeleteIcon />}>Удалить</Button>
             </Grid>
         </>
     })

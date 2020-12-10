@@ -36,8 +36,8 @@ const ContactsContainer = () => {
     if (loading) return <Preloader />
     if (error) {console.log(error); return <p>Error :(</p>}
     
-    const deleteHandle = (name)=>{
-      deleteContact({ variables: { firstName:name } }).then(res=>{
+    const deleteHandle = (id)=>{
+      deleteContact({ variables: { _id:id } }).then(res=>{
         refetch()
       })
     }
