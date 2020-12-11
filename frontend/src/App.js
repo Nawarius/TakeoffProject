@@ -9,7 +9,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import React, { useState } from 'react';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8000',
+  uri: 'http://localhost:4000',
   cache: new InMemoryCache()
 });
 

@@ -13,7 +13,7 @@ mongoose.connect(`mongodb+srv://User:uEN6jV8YNm23u4l6@clusterz.glx3q.mongodb.net
     useFindAndModify: false,
     useCreateIndex: true
 }).then(res=>{
-  server.listen({port:8000}).then(() => {
+  server.listen({port: process.env.PORT || 4000}).then(() => {
     console.log(`DB Connected`);
   });
 }).catch(err=>{
