@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ContactsPresent = ({data, submitHandler, changeHandle, open, setOpen, deleteHandle, firstNameForSearch,setChangeOpenModal, openChangeModal, changeContactHandle }) => {
+const ContactsPresent = ({data, submitHandler, changeHandle, open, setOpen, deleteHandle,firstNameForSearch,setChangeOpenModal, openChangeModal, changeContactHandle})=>{
     const classes = useStyles()
     const {setFirstName, setAge, setAvatar, setEmail, setLastName, setId} = useContext(ChangeContext)
     console.log(data.contacts)
@@ -61,7 +61,7 @@ const ContactsPresent = ({data, submitHandler, changeHandle, open, setOpen, dele
         <ModalChange openChangeModal = {openChangeModal}  setChangeOpenModal = {setChangeOpenModal} 
             changeHandle = {changeHandle} submitHandler = {submitHandler} changeContactHandle = {changeContactHandle}
         />
-        <ModalAdd submitHandler = {submitHandler} changeHandle = {changeHandle} open = {open} setOpen = {setOpen} />
+        <ModalAdd submitHandler = {submitHandler} changeHandle = {changeHandle} open = {open} setOpen = {setOpen} firstNameForSearch = {firstNameForSearch}/>
         {contacts}
     </>
     

@@ -21,7 +21,7 @@ function App() {
       <ApolloProvider client = {client}>
         <Container style = {{height:'100%'}}>
           <Paper elevation = {10} style = {{minHeight:'100%'}} >
-          <Bar />
+          <Bar isLogged = {isLogged}/>
             <Route path="/" exact>
               <Main />
             </Route>

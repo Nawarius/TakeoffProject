@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     margin:theme.spacing(1)
   }
 }));
-export default function SimpleModal({submitHandler, changeHandle, open, setOpen}) {
+export default function SimpleModal({submitHandler, changeHandle, open, setOpen, firstNameForSearch}) {
   const classes = useStyles();
   
   const [modalStyle] = useState(getModalStyle);
@@ -71,7 +71,7 @@ export default function SimpleModal({submitHandler, changeHandle, open, setOpen}
   );
 
   return <>
-      <Button  onClick={handleOpen} color = 'primary' variant = 'contained' className={classes.addButton} endIcon = {<AddIcon/>}>Добавить</Button>
+      <Button  disabled = {firstNameForSearch} onClick={handleOpen} color = 'primary' variant = 'contained' className={classes.addButton} endIcon = {<AddIcon/>}>Добавить</Button>
       <Modal open={open} onClose={handleClose}>
         {body}
       </Modal>

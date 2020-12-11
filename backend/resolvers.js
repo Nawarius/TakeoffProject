@@ -5,6 +5,11 @@ const resolvers = {
       contacts: async function (parent, args) {
           if(!args.firstName) return await Contact.find({})
           return await Contact.find({firstName:{$regex: '^' + args.firstName, $options: 'i'}})
+      },
+      login:async function (parent, args) {
+        const username = 'admin',pass = 'admin'
+        if (args.username === username && args.pass === pass) return true
+        return false
       }
     },
     Mutation: {

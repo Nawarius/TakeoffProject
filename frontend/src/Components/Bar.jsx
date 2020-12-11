@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const Bar = () => {
+const Bar = ({isLogged}) => {
     const classes = useStyles()
     return <>
         <AppBar position="static" >
@@ -23,8 +23,10 @@ const Bar = () => {
                 <Button color="inherit">Contacts</Button>
             </NavLink>
             <NavLink to = '/login' className = {classes.navlink}>
-                <Button color="inherit">Login</Button>
+                {!isLogged && <Button color="inherit">Login</Button>}
+                {isLogged && <Button color="inherit">Admin</Button>}
             </NavLink>
+            
         </Toolbar>
         </AppBar>
 

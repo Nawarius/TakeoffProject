@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import LoginPresent from './LoginPresent'
+import LOGIN from '../queries/login'
+import { useLazyQuery } from '@apollo/client'
 
-const LoginContainer = ({setLogin, isLogged}) => {
+const LoginContainer = ({setLogin}) => {
     const [username, setUsername] = useState(null)
     const [pass, setPass] = useState(null)
 
+    const [loginQuery, {data}] = useLazyQuery(LOGIN)
+    if(data) setLogin(data.login)
+
     const submitHandler = (e)=>{
         e.preventDefault()
-        if(username === "admin" && pass === "admin"){
-            setLogin(true)
-            return <Redirect to = '/contacts' />
-        }
-       
+        loginQuery({variables:{username,pass}})
     }
     const changeHandle = (e)=>{
         switch(e.target.name){

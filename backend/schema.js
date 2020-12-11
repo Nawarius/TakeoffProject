@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
   type Query {
     contacts(firstName:String): [Contact],
-    
+    login(username:String, pass:String): Boolean
   }
   type Mutation {
       addContact(Input:ContactInput): Contact
